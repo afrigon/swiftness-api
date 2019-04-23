@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
-const fs = require('fs')
 const path = require('path')
 let data = require("./data.json")
 
