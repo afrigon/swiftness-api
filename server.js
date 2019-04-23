@@ -3,14 +3,9 @@ const app = express()
 const server = require('http').createServer(app)
 const fs = require('fs')
 const path = require('path')
+let data = require("./data.json")
 
 app.disable('x-powered-by')
-
-// reload data whe the json file changes
-let data = require("./data.json")
-fs.watch('data.json', (eventType, filename) => {
-    data = require('./data.json')
-})
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')))
 app.use('/static', express.static('static', { maxAge: '7d' }))
